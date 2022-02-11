@@ -21,21 +21,38 @@
                     <textarea id="description" name="description"></textarea>
                 </div>
 
-                <div class="options">
+                <div class="options"
+                :style="{
+                    'border': '1px dashed #000',
+                    'border-color': '#333',
+                    'border-bottom-left-radius': '0px',
+                    'border-bottom-right-radius': '0px',
+                    'border-bottom': '1px dashed #000',
+                    'border-top-left-radius': '0px',
+                    'border-top-right-radius': '0px',
+                    'border-top': '1px dashed #000',
+                    'padding': '30px 10px',
+                    'margin': '0px 100px',
+                  }"
+                >
                     <div>
-                        <input type="checkbox" id="reverse" value="reverse">
+                        <input v-model="optionArray" true-value = "on" false-value = "off" type="checkbox" id="reverse" value="reverse">
                         <label for="reverse">Include reverse cards</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="time_limit" value="time_limit">
+                        <input v-model="optionArray" type="checkbox" id="time_limit" value="time_limit">
                         <label for="time_limit">Use time limit</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" id="reminders" value="reminders">
+                        <input v-model="optionArray" type="checkbox" id="reminders" value="reminders">
                         <label for="reminders">Enable reminders</label>
                     </div>
+                </div>
+
+                <div> 
+                    <p>Selected options = {{optionArray}}</p>
                 </div>
 
                 <button type="submit">Create</button>
@@ -48,7 +65,9 @@
                 data() {
                     return {
                         deckName: 'Vue.js Fundamentals',
-                        deckDescription: 'Core concepts and directives for working with Vue.js'
+                        deckDescription: 'Core concepts and directives for working with Vue.js',
+                        optionArray: [],
+
                     };
                 }
             };
